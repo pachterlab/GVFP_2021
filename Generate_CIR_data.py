@@ -32,15 +32,15 @@ n_threads = 4
 x0 = [0,0]
 ts=0  
 total_t = 0
-meta = ('alpha, eta: shape and rate parameters of gamma distribution' + 'beta, gamma: splicing and degradation rate\t' 
-            + 'kappa: mean-reversion rate' + 'T_: simulation timescale end. Tmax = T/min([kappa, gamma, alpha*kappa, eta])' 
-            + 'nCell: Number of cells' + 'dt: integration step size' + 'runtime: Runtime (seconds)\t'
-            + 'nT: number of time points\t' + 'Tmax: End time\t' + 'tvec: Time vector of SDE\t' 
-            + 'X_s: 2D array of molecule counts in each cell at Tmax (nCell, 2)'
-            + 'SDE_t: 100 samples of simulated CIR process (100, nT)' + 'SDE_mean: mean of all CIR processes (not SDE_t)')
+meta = ('alpha, eta: shape and rate parameters of gamma distribution\t' + 'beta, gamma: splicing and degradation rate\n' 
+            + 'kappa: mean-reversion rate\t' + 'T_: simulation timescale end. Tmax = T/min([kappa, gamma, alpha*kappa, eta])\n' 
+            + 'nCell: Number of cells\t' + 'dt: integration step size\t' + 'runtime: Runtime (seconds)\n'
+            + 'nT: number of time points\t' + 'Tmax: End time\t' + 'tvec: Time vector of SDE\n' 
+            + 'X_s: 2D array of molecule counts in each cell at Tmax (nCell, 2)\n'
+            + 'SDE_t: 100 samples of simulated CIR process (100, nT)\t' + 'SDE_mean: mean of all CIR processes (not SDE_t)')
 #%%
 if __name__ == "__main__":
-    # use another file for command line
+    
     #parser = argparse.ArgumentParser(add_help=True, description='Run CIR 2D simulation')
     #parser.add_argument('--nthreads', '-t', default=4, metavar='n_threads', type=int, action='store_true', help='n_threads')
     #parser.add_argument('--nCell', '-n', default=10000, metavar='nCell', type=int, action='store_true', help='nCell')
