@@ -37,12 +37,14 @@ if __name__ == "__main__":
     args = parser.parse_args()
 
     paras = pd.read_csv('data/gg_201206_cir_param_vals_2.txt', sep='\t', index_col=0, header = 0)
-    names = ('1_intrinsic','2_extrinsic','3_poisson')#,'4_fastnoise','5_intermed','6_intermed')
+
+    names = ('1_intrinsic','2_extrinsic','3_poisson','4_fastnoise','5_intermed','6_intermed')
     names = [os.path.join(args.outdir,'CIR_'+i_+'.mat') for i_ in names]
     
     if not os.path.isdir(args.outdir):
         os.mkdir(args.outdir)
     #%%        
+
     for i in range(1,7):
         trun = time.time()
         # load parameters
