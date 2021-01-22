@@ -131,7 +131,7 @@ plt.savefig('./figure/20201223.png',dpi=450)
 #%% plot autocorrelation
 
 names = ('1_intrinsic','2_extrinsic','3_poisson','4_fastnoise','5_intermed','6_intermed')
-names = [os.path.join('output','autocorr_test','CIR_'+i_+'.mat') for i_ in names]
+names = [os.path.join('output','20210122','CIR_'+i_+'.mat') for i_ in names]
 
 N = len(names)
 sz = (2,N)
