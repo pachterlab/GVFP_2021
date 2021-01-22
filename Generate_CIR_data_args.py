@@ -45,7 +45,7 @@ if __name__ == "__main__":
         os.mkdir(args.outdir)
     #%%        
 
-    for i in range(1,3):
+    for i in range(2,3):
         trun = time.time()
         # load parameters
         beta = paras.at[i,'beta'] 
@@ -59,7 +59,7 @@ if __name__ == "__main__":
         #initial value
         r0 = np.random.gamma(alpha, 1/eta, size = args.nCell)
         if i==2:
-            lag=20
+            lag=40
         else:
             lag=10
         te = T+lag

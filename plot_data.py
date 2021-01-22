@@ -32,7 +32,7 @@ titles = ('Intrinsic','Extrinsic','Poisson','Fast-noise','Intermed. 1','Intermed
 labels = ('SDE driver','Nascent histogram','Mature histogram','Joint histogram')
 
 names = ('1_intrinsic','2_extrinsic','3_poisson','4_fastnoise','5_intermed','6_intermed')
-names = [os.path.join('output','20201223','CIR_'+i_+'.mat') for i_ in names]
+names = [os.path.join('output','20210122','CIR_'+i_+'.mat') for i_ in names]
 
 N = len(names)
 sz = (4,N)
@@ -45,7 +45,7 @@ IND_ = np.random.randint(0,100,N)
 
 for i,name in enumerate(names):
     data = sio.loadmat(name)
-    X = data['X_s']
+    X = data['X_s'][:,-1,:]
     R = data['SDE_t']
     tvec = data['tvec_sde']
     r = R[IND_[i],:]
@@ -76,7 +76,7 @@ for i,name in enumerate(names):
     # CIR
     ax[0,i].plot(tvec.flatten(), r.flatten(), color = col_one)
     ax[0,i].plot(tvec.flatten(), R_mean.flatten(), color = col_mean)
-    ax[0,i].plot([0,data['Tmax']],[mu]*2,color=col_theory,linestyle=(0,(5,10)),linewidth=w_theory)
+    ax[0,i].plot([0,tvec[-1]],[mu]*2,color=col_theory,linestyle=(0,(5,10)),linewidth=w_theory)
     
     # Nascent mRNA
     ax[1,i].plot(x, np.sum(Pss, axis=0), color='black', alpha = 0.75)
@@ -126,7 +126,7 @@ for a in ax:
         b.set_yticks([],minor=True)
 '''
 fig.tight_layout()
-plt.savefig('./figure/20201223.png',dpi=450)
+#plt.savefig('./figure/20201223.png',dpi=450)
 
 #%% plot autocorrelation
 
@@ -155,7 +155,10 @@ for i,name in enumerate(names):
     auto_CIR_1_sim = np.cov(X[:,:,1].T)[0]/np.var(X[:,0,1])
     
     tau_min = 0
-    tau_max = 10
+    if i==1:
+        tau_max = 20
+    else:
+        tau_max = 10
     num_tau = 100
     tau = np.linspace(tau_min, tau_max, num_tau)
     
@@ -167,7 +170,7 @@ for i,name in enumerate(names):
     auto_CIR_0, auto_CIR_1 = get_auto_CIR_2sp(tau, params_2sp)
     
     # nascent RNA 
-    ax[0,i].plot(tau, auto_CIR_1sp, color='red', label='one specie theoy')
+    #ax[0,i].plot(tau, auto_CIR_1sp, color='red', label='one specie theoy')
     ax[0,i].plot(tau, auto_CIR_0, color='black', label='two species theoy')
     ax[0,i].plot(tau, auto_CIR_0_sim, color='blue', label='simulation')
  
@@ -175,7 +178,7 @@ for i,name in enumerate(names):
     ax[1,i].plot(tau, auto_CIR_1, color='black', label='two species theoy')
     ax[1,i].plot(tau, auto_CIR_1_sim, color='blue', label='simulation')
    
-plt.savefig('figure/autocorr_20210122.pdf', bbox_inches='tight')
+#plt.savefig('figure/autocorr_20210122.pdf', bbox_inches='tight')
 plt.show()
     
       
