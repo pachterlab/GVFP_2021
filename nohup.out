@@ -1,53 +1,9 @@
-Traceback (most recent call last):
-  File "Generate_CIR_data.py", line 47, in <module>
-    paras = pd.read_excel('./data/gg_201206_cir_param_vals 2.xlsx', index_col=0, header = 0)
-  File "/home/mffang/.local/lib/python3.6/site-packages/pandas/util/_decorators.py", line 296, in wrapper
-    return func(*args, **kwargs)
-  File "/home/mffang/.local/lib/python3.6/site-packages/pandas/io/excel/_base.py", line 304, in read_excel
-    io = ExcelFile(io, engine=engine)
-  File "/home/mffang/.local/lib/python3.6/site-packages/pandas/io/excel/_base.py", line 867, in __init__
-    self._reader = self._engines[engine](self._io)
-  File "/home/mffang/.local/lib/python3.6/site-packages/pandas/io/excel/_xlrd.py", line 21, in __init__
-    import_optional_dependency("xlrd", extra=err_msg)
-  File "/home/mffang/.local/lib/python3.6/site-packages/pandas/compat/_optional.py", line 110, in import_optional_dependency
-    raise ImportError(msg) from None
-ImportError: Missing optional dependency 'xlrd'. Install xlrd >= 1.0.0 for Excel support Use pip or conda to install xlrd.
-Traceback (most recent call last):
-  File "Generate_CIR_data.py", line 47, in <module>
-    paras = pd.read_excel('./data/gg_201206_cir_param_vals 2.xlsx', index_col=0, header = 0)
-  File "/home/mffang/.local/lib/python3.6/site-packages/pandas/util/_decorators.py", line 296, in wrapper
-    return func(*args, **kwargs)
-  File "/home/mffang/.local/lib/python3.6/site-packages/pandas/io/excel/_base.py", line 304, in read_excel
-    io = ExcelFile(io, engine=engine)
-  File "/home/mffang/.local/lib/python3.6/site-packages/pandas/io/excel/_base.py", line 867, in __init__
-    self._reader = self._engines[engine](self._io)
-  File "/home/mffang/.local/lib/python3.6/site-packages/pandas/io/excel/_xlrd.py", line 22, in __init__
-    super().__init__(filepath_or_buffer)
-  File "/home/mffang/.local/lib/python3.6/site-packages/pandas/io/excel/_base.py", line 353, in __init__
-    self.book = self.load_workbook(filepath_or_buffer)
-  File "/home/mffang/.local/lib/python3.6/site-packages/pandas/io/excel/_xlrd.py", line 37, in load_workbook
-    return open_workbook(filepath_or_buffer)
-  File "/home/mffang/.local/lib/python3.6/site-packages/xlrd/__init__.py", line 170, in open_workbook
-    raise XLRDError(FILE_FORMAT_DESCRIPTIONS[file_format]+'; not supported')
-xlrd.biffh.XLRDError: Excel xlsx file; not supported
-Traceback (most recent call last):
-  File "Generate_CIR_data.py", line 47, in <module>
-    paras = pd.read_excel('./data/gg_201206_cir_param_vals 2.xlsx', index_col=0, header = 0)
-  File "/home/mffang/.local/lib/python3.6/site-packages/pandas/util/_decorators.py", line 296, in wrapper
-    return func(*args, **kwargs)
-  File "/home/mffang/.local/lib/python3.6/site-packages/pandas/io/excel/_base.py", line 304, in read_excel
-    io = ExcelFile(io, engine=engine)
-  File "/home/mffang/.local/lib/python3.6/site-packages/pandas/io/excel/_base.py", line 867, in __init__
-    self._reader = self._engines[engine](self._io)
-  File "/home/mffang/.local/lib/python3.6/site-packages/pandas/io/excel/_xlrd.py", line 22, in __init__
-    super().__init__(filepath_or_buffer)
-  File "/home/mffang/.local/lib/python3.6/site-packages/pandas/io/excel/_base.py", line 353, in __init__
-    self.book = self.load_workbook(filepath_or_buffer)
-  File "/home/mffang/.local/lib/python3.6/site-packages/pandas/io/excel/_xlrd.py", line 37, in load_workbook
-    return open_workbook(filepath_or_buffer)
-  File "/home/mffang/.local/lib/python3.6/site-packages/xlrd/__init__.py", line 166, in open_workbook
-    file_format = inspect_format(filename, file_contents)
-  File "/home/mffang/.local/lib/python3.6/site-packages/xlrd/__init__.py", line 60, in inspect_format
-    with open(path, "rb") as f:
-FileNotFoundError: [Errno 2] No such file or directory: './data/gg_201206_cir_param_vals 2.xlsx'
-total time (min): 146.6154452284177
+output/20210122/CIR_4_fastnoise.mat  time(s):  87.23734736442566
+output/20210122/CIR_5_intermed.mat  time(s):  69.10837364196777
+output/20210122/CIR_6_intermed.mat  time(s):  73.80507016181946
+total time (min): 3.835846519470215
+output/20210122/CIR_1_intrinsic.mat  time(s):  126.2247211933136
+total time (min): 2.1037453532218935
+output/20210122/CIR_1_intrinsic.mat  time(s):  102.5351984500885
+output/20210122/CIR_2_extrinsic.mat  time(s):  846.1467535495758
+total time (min): 15.811365866661072

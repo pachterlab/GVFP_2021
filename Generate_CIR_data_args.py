@@ -45,7 +45,7 @@ if __name__ == "__main__":
         os.mkdir(args.outdir)
     #%%        
 
-    for i in range(1,7):
+    for i in range(1,3):
         trun = time.time()
         # load parameters
         beta = paras.at[i,'beta'] 
@@ -57,8 +57,12 @@ if __name__ == "__main__":
         T = Ts[i-1]#T = paras.at[i,'T']
    
         #initial value
-        r0 = np.random.gamma(alpha, 1/eta, size = args.nCell)      
-        te = T+10
+        r0 = np.random.gamma(alpha, 1/eta, size = args.nCell)
+        if i==2:
+            lag=20
+        else:
+            lag=10
+        te = T+lag
         tvec_mol = np.linspace(T, te, 100)
         tvec_sde = np.linspace(0, T, nT)
         dt = T/(nT-1)
