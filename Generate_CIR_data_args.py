@@ -19,7 +19,7 @@ import argparse
 nT = 500
 h = 0.001
 x0 = [0,0]
-Ts=[20,200,60,7.14285714285714,7.39098300073910,7.14285714285714]
+Ts=[20,200,60,7.14285714285714,7.39098300073910,7.14285714285714,23.579489051335848]
 ts=0  
 total_t = 0
 meta = ('alpha, eta: shape and rate parameters of gamma distribution\t' + 'beta, gamma: splicing and degradation rate\n' 
@@ -38,14 +38,14 @@ if __name__ == "__main__":
 
     paras = pd.read_csv('data/gg_201206_cir_param_vals_2.txt', sep='\t', index_col=0, header = 0)
 
-    names = ('1_intrinsic','2_extrinsic','3_poisson','4_fastnoise','5_intermed','6_intermed')
+    names = ('1_intrinsic','2_extrinsic','3_poisson','4_fastnoise','5_intermed','6_intermed','7_')
     names = [os.path.join(args.outdir,'CIR_'+i_+'.mat') for i_ in names]
     
     if not os.path.isdir(args.outdir):
         os.mkdir(args.outdir)
     #%%        
 
-    for i in range(2,3):
+    for i in range(7,8):
         trun = time.time()
         # load parameters
         beta = paras.at[i,'beta'] 

@@ -156,7 +156,7 @@ for i,name in enumerate(names):
     
     tau_min = 0
     if i==1:
-        tau_max = 20
+        tau_max = 40
     else:
         tau_max = 10
     num_tau = 100
@@ -178,7 +178,7 @@ for i,name in enumerate(names):
     ax[1,i].plot(tau, auto_CIR_1, color='black', label='two species theoy')
     ax[1,i].plot(tau, auto_CIR_1_sim, color='blue', label='simulation')
    
-#plt.savefig('figure/autocorr_20210122.pdf', bbox_inches='tight')
+plt.savefig('figure/autocorr_20210122.pdf', bbox_inches='tight')
 plt.show()
     
       
