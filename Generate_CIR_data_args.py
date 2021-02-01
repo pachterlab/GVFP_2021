@@ -59,7 +59,7 @@ if __name__ == "__main__":
         #initial value
         r0 = np.random.gamma(alpha, 1/eta, size = args.nCell)
         if i==2:
-            lag=40
+            lag=50
         else:
             lag=10
         te = T+lag
