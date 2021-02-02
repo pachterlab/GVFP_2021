@@ -28,10 +28,10 @@ w_theory = 1.5
 fontsize = 12
 
 #%%
-titles = ('Intrinsic','Extrinsic','Poisson','Fast-noise','Intermed. 1','Intermed. 2')
+titles = ('Intrinsic','Extrinsic','Poisson','Fast-noise','Intermed. 1','Intermed. 2','New')
 labels = ('SDE driver','Nascent histogram','Mature histogram','Joint histogram')
 
-names = ('1_intrinsic','2_extrinsic','3_poisson','4_fastnoise','5_intermed','6_intermed')
+names = ('1_intrinsic','2_extrinsic','3_poisson','4_fastnoise','5_intermed','6_intermed','7_')
 names = [os.path.join('output','20210122','CIR_'+i_+'.mat') for i_ in names]
 
 N = len(names)
@@ -76,7 +76,7 @@ for i,name in enumerate(names):
     # CIR
     ax[0,i].plot(tvec.flatten(), r.flatten(), color = col_one)
     ax[0,i].plot(tvec.flatten(), R_mean.flatten(), color = col_mean)
-    ax[0,i].plot([0,tvec[-1]],[mu]*2,color=col_theory,linestyle=(0,(5,10)),linewidth=w_theory)
+    ax[0,i].plot([0,tvec.flatten()[-1]],[mu]*2,color=col_theory,linestyle=(0,(5,10)),linewidth=w_theory)
     
     # Nascent mRNA
     ax[1,i].plot(x, np.sum(Pss, axis=0), color='black', alpha = 0.75)
@@ -111,12 +111,12 @@ for i,name in enumerate(names):
     ax[3,i].set_yscale('log')
     ax[3,i].set_xlim([1,np.amax(X[:,0])+1])
     ax[3,i].set_ylim([1,np.amax(X[:,1])+1])
-'''    
+   
 for j_ in range(4):
     ax[j_,0].set_ylabel(labels[j_],fontsize=fontsize)
 for j_ in range(N):
     ax[0,j_].set_title(titles[j_],fontsize=fontsize)
-
+''' 
 for a in ax:
     for b in a:
         # b.axis('off')
@@ -126,11 +126,13 @@ for a in ax:
         b.set_yticks([],minor=True)
 '''
 fig.tight_layout()
-#plt.savefig('./figure/20201223.png',dpi=450)
+plt.savefig('./figure/20210122_dis.pdf',dpi=450)
 
 #%% plot autocorrelation
+titles = ('Intrinsic','Extrinsic','Poisson','Fast-noise','Intermed. 1','Intermed. 2','New')
+labels = ('Nascent autocorr','Mature autocorr')
 
-names = ('1_intrinsic','2_extrinsic','3_poisson','4_fastnoise','5_intermed','6_intermed')
+names = ('1_intrinsic','2_extrinsic','3_poisson','4_fastnoise','5_intermed','6_intermed','7_')
 names = [os.path.join('output','20210122','CIR_'+i_+'.mat') for i_ in names]
 
 N = len(names)
@@ -156,7 +158,7 @@ for i,name in enumerate(names):
     
     tau_min = 0
     if i==1:
-        tau_max = 40
+        tau_max = 50
     else:
         tau_max = 10
     num_tau = 100
@@ -178,7 +180,14 @@ for i,name in enumerate(names):
     ax[1,i].plot(tau, auto_CIR_1, color='black', label='two species theoy')
     ax[1,i].plot(tau, auto_CIR_1_sim, color='blue', label='simulation')
    
-plt.savefig('figure/autocorr_20210122.pdf', bbox_inches='tight')
+for j_ in range(2):
+    ax[j_,0].set_ylabel(labels[j_],fontsize=fontsize)
+for j_ in range(N):
+    ax[0,j_].set_title(titles[j_],fontsize=fontsize)
+    ax[1,j_].set_xlabel('lag',fontsize=fontsize)
+    
+    
+plt.savefig('figure/20210122_autocorr.pdf', bbox_inches='tight')
 plt.show()
     
       
