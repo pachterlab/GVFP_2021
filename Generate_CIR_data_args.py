@@ -22,13 +22,7 @@ x0 = [0,0]
 Ts=[20,200,60,7.14285714285714,7.39098300073910,7.14285714285714,23.579489051335848]
 ts=0  
 total_t = 0
-meta = ('alpha, eta: shape and rate parameters of gamma distribution\t' + 'beta, gamma: splicing and degradation rate\n' 
-            + 'kappa: mean-reversion rate\t' + 'T_: simulation timescale end. Tmax = T/min([kappa, gamma, alpha*kappa, eta])\n' 
-            + 'nCell: Number of cells\t' + 'dt: integration step size\t' + 'runtime: Runtime (seconds)\n'
-            + 'nT: number of time points\t' + 'Tmax: End time\t' + 'tvec: Time vector of SDE\n' 
-            + 'X_s: 2D array of molecule counts in each cell at Tmax (nCell, 2)\n'
-            + 'SDE_t: 100 samples of simulated CIR process (100, nT)\t' + 'SDE_mean: mean of all CIR processes (not SDE_t)')
-#%%
+
 if __name__ == "__main__":   
     parser = argparse.ArgumentParser(add_help=True, description='Run CIR 2D simulation')
     parser.add_argument("-t", "--n_threads", default=4, type=int, action='store', help='n_threads')

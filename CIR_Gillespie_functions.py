@@ -11,6 +11,9 @@ Created on Fri Dec  4 14:36:44 2020
 import numpy as np
 from math import log, exp, sqrt, ceil
 import matplotlib.pyplot as plt
+import time
+from multiprocessing import Pool
+import scipy.io as sio
 
 
 def CIR(r0, ts, te, h, args, random_seed = None):
@@ -293,7 +296,47 @@ def Gillespie_CIR_2D_tau(args):
     
     return Xs, SDE
     
-
+def Gillespie_CIR_2D_data(beta, gamma, kappa, alpha, eta, T, lag, nCell, n_threads, filename):
+    meta = ('alpha, eta: shape and rate parameters of gamma distribution\t' + 'beta, gamma: splicing and degradation rate\n' 
+            + 'kappa: mean-reversion rate\t' + 'T_: simulation timescale end. Tmax = T/min([kappa, gamma, alpha*kappa, eta])\n' 
+            + 'nCell: Number of cells\t' + 'dt: integration step size\t' + 'runtime: Runtime (seconds)\n'
+            + 'nT: number of time points\t' + 'Tmax: End time\t' + 'tvec: Time vector of SDE\n' 
+            + 'X_s: 2D array of molecule counts in each cell at Tmax (nCell, 2)\n'
+            + 'SDE_t: 100 samples of simulated CIR process (100, nT)\t' + 'SDE_mean: mean of all CIR processes (not SDE_t)')
+    nT = 500 #CIR sample number
+    h = 0.001 #step size threshold
+    x0 = [0,0]
+    trun = time.time()
+    # load parameters
+    args_CIR = [kappa, alpha/eta, 2*kappa/eta]
+   
+    #initial value
+    r0 = np.random.gamma(alpha, 1/eta, size = nCell)
+    te = T+lag
+    tvec_mol = np.linspace(T, te, 100)
+    tvec_sde = np.linspace(0, T, nT)
+    dt = T/(nT-1)
+    idx = 1
+    while dt > h:
+        dt = dt/2
+        idx = idx*2
+    idx = idx*np.arange(0,nT)
+    idx = idx.astype(int)
+    
+    # Pool
+    input_args = [(te, dt, r0_, x0, beta, gamma, args_CIR, tvec_mol, idx) for r0_ in r0]       
+    with Pool(n_threads) as pool:      
+        X_s, SDE = zip(*pool.map(Gillespie_CIR_2D_tau, input_args))
+    
+    # write data    
+    SDE_mean = np.mean(SDE, axis = 0)            
+    trun = time.time() - trun 
+    mdict={'runtime': trun, 'Ncell': nCell, 'Tmax': te, 'dt': dt, 'T': T, 'tvec_mol': tvec_mol, 'tvec_sde': tvec_sde,
+           'X_s': np.array(X_s), 'SDE_t': np.array(SDE[0:100]), 'SDE_mean': SDE_mean,
+           'alpha': alpha, 'eta': eta, 'kappa': kappa, 'beta': beta, 'gamma': gamma,
+           'metadata': meta}
+    sio.savemat(filename, mdict, do_compression = True)
+    return trun
 
 
 if __name__ == '__main__':
