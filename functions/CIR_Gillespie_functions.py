@@ -339,22 +339,15 @@ def Gillespie_CIR_2D_data(beta, gamma, kappa, alpha, eta, T, lag, nCell, n_threa
     return trun
 
 
-if __name__ == '__main__':
-    fig, ax = plt.subplots(4, 1, figsize = (6,18))
-    
-    ax[0].set_title('test CIR function')
-    T, R = CIR(0,0,10,0.001,(10, 20, 0.5))
-    ax[0].plot(T, R, 'r.', markersize = 0.1)
-    
-    ax[1].set_title('test CIR_Milstein function')
-    T, R = CIR(0,0,10,0.001,(10, 20, 0.5))
-    ax[1].plot(T, R, 'r.', markersize = 0.1)
-    
-    ax[2].set_title('test Gillespie_CIR_1D function')
-    T, X, Tr, R = Gillespie_CIR_1D(0, 10, 0.001, 20, 0, 2, (10, 20, 0.5))
-    ax[2].plot(T, X, 'r.-', markersize = 1)
-    
-    ax[3].set_title('test Gillespie_CIR_2D function')
-    T, X, Tr, R = Gillespie_CIR_2D(0, 10, 0.001, 20, [0,0], 1, 2, (10, 20, 0.5))
-    ax[3].plot(T, X[:,0], 'r.-', markersize = 1)
-    ax[3].plot(T, X[:,1], 'b.-', markersize = 1)
+
+
+if __name__ == "__main__":
+    kappa,L,eta,beta,gamma = 0.60440829, 0.24280198, 0.17960711, 2.44193867, 0.2120487
+    alpha = L/kappa
+    T = 23.579489051335848
+    lag = 10
+    nCell = 10000
+    n_threads = 40
+    filename = "data/CIR_output/20210122/CIR_7_.mat"
+    trun = Gillespie_CIR_2D_data(beta, gamma, kappa, alpha, eta, T, lag, nCell, n_threads, filename)
+    print(trun)
