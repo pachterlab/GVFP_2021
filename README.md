@@ -11,11 +11,11 @@ Code to reproduce the figures and results in the paper.
 Includes simulation parameters and all simulation data.
 
 ### functions
-CIR_functions.py computes steady state distribution of 2 species CIR based on analytical results.
+CIR_functions.py includes functions that compute steady state distribution of 2 species CIR based on analytical results.
 
-GOU_functions.py implements 
+GOU_functions.py includes functions that compute steady state distribution of 2 species $\Gamma$-OU and divergence between two models.
 
-autocorr_functions.py computes autocorrelation function for 2 species CIR.
+autocorr_functions.py computes the autocorrelation function.
 
 CIR_Gillespie_functions.py implements Gillespie algorithm for 2 species CIR.
 
