@@ -3,7 +3,7 @@ from numpy import matlib
 
 import scipy 
 import scipy.integrate
-from CIR_functions import *
+from .CIR_functions import *
 
 
 def compute_Pss(par,topclip=np.inf):
@@ -14,10 +14,13 @@ def compute_Pss(par,topclip=np.inf):
     std = np.sqrt(np.array([m[0]*(1+1/(eta*(kappa+splic))), m[1]*(1+splic*(kappa+splic+gamma)/(eta*(kappa+splic)*(kappa+gamma)*(splic+gamma)))]))
     mx = np.clip(np.ceil(m+std*5),8,topclip)
     
+    x = np.arange(np.amax(mx))
+    X0, X1 = np.meshgrid(x, x)
     
     Pss_gou = np.squeeze(cme_integrator(L,1/eta/kappa,gamma,[kappa,splic],[1,int(mx[0]),int(mx[1])],np.inf))
-    Pss_cir = np.squeeze(get_Pss_CIR_2sp_ODE([int(mx[0]),int(mx[1])], [splic,gamma,kappa,1/eta,alpha]))
-    return Pss_gou,Pss_cir,mx
+    Pss_cir = get_Pss_CIR_2sp_ODE(X0, X1, params=[splic,gamma,kappa,1/eta,alpha])
+    
+    return Pss_gou,Pss_cir,mx,x
 
 def get_1sp_sb(tau,params):
     gamma, beta, b = params
