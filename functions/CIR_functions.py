@@ -145,3 +145,24 @@ def get_Pss_CIR_2sp_ODE(mx, params):
     return Pss
 
 # ====================================================
+
+##Catalan func
+
+def compute_catalan_nas(x,L,splic,b):
+    l = np.arange(x)
+    u = np.exp(-2j*np.pi*l/x)-1
+    C = lambda s: (1-np.sqrt(1-4*s))/2
+    C_ = C(b*u)
+    gf = np.exp(2*C_*L/splic) * (1-C_)**(L/splic)
+    return ifft(gf)
+    
+def compute_catalan_mat(x,L,rates,b):
+    splic,gamma = rates
+
+    l = np.arange(x)
+    u = np.exp(-2j*np.pi*l/x)-1
+    ffun = lambda t: splic/(splic-gamma) * u * (np.exp(-gamma*t) - np.exp(-splic*t))
+    intfun = lambda t: 1-np.sqrt(1-4*b*ffun(t))
+    integ = scipy.integrate.quad_vec(intfun,0,np.inf)[0]
+    gf = np.exp(L/2*integ)
+    return ifft(gf)
