@@ -3,7 +3,7 @@ from numpy import matlib
 
 import scipy 
 import scipy.integrate
-from .CIR_functions import *
+from CIR_functions import *
 
 
 def compute_Pss(par,topclip=np.inf):
