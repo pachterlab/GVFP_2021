@@ -20,7 +20,7 @@ def compute_Pss(par,topclip=np.inf):
     Pss_gou = np.squeeze(cme_integrator(L,1/eta/kappa,gamma,[kappa,splic],[1,int(mx[0]),int(mx[1])],np.inf))
     Pss_cir = get_Pss_CIR_2sp_ODE(X0, X1, params=[splic,gamma,kappa,1/eta,alpha])
     
-    return Pss_gou,Pss_cir,mx,x
+    return Pss_gou,Pss_cir,mx
 
 def get_1sp_sb(tau,params):
     gamma, beta, b = params
