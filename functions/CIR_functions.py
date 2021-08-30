@@ -4,6 +4,7 @@ Created on Mon Dec  7 08:38:51 2020
 
 @author: johnv
 """
+import scipy
 from scipy.fft import irfft, irfftn, ifft
 import numpy as np
 
