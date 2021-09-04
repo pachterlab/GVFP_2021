@@ -4,7 +4,7 @@ SDE comparison preprint: A discussion of the differences induced by choice of st
 
 ## Content
 
-### gg210326_gou_cir.ipynb
+### gg210824_gou_cir.ipynb
 Code to reproduce the figures and results in the paper. 
 
 ### data
