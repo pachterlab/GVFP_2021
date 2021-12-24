@@ -4,8 +4,11 @@ SDE comparison preprint: A discussion of the differences induced by choice of st
 
 ## Content
 
+### figure_2_notebook.ipynb and figure_3_notebook.ipynb
+Code to reproduce the demonstrations of limiting cases and inferential performance.
+
 ### gg210824_gou_cir.ipynb
-Code to reproduce the figures and results in the paper. 
+Code to reproduce the figures and results in the supplement. 
 
 ### data
 Includes simulation parameters and all simulation data.
