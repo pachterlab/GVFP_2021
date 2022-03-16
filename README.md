@@ -1,3 +1,5 @@
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.6361041.svg)](https://doi.org/10.5281/zenodo.6361041)
+
 # GVFP_2021
 SDE comparison preprint: A discussion of the differences induced by choice of stochastic continuous noise model for transcription. Includes simulation code and validation notebooks.
 
