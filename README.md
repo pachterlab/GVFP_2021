@@ -50,6 +50,8 @@ Installing these dependencies typically takes under one minute.
 
 # Use demonstrations
 
+The expected outputs for all notebooks are contained in the compiled and pre-run notebooks contained in the directory. The Figure 3 and simulation notebooks typically have small differences, as they use stochastic procedures for MCMC sampling and simulation.
+
 ## Figure 2
 
 To reproduce the distributions and transcription rate time-series demonstrated in Figure 2, open `figure_2_notebook_colab.ipynb`, click "Open in Colab", and select "Runtime &rarr; Run all". This typically takes under 20 seconds and should exactly reproduce Figure 2. 
