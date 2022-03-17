@@ -1,4 +1,4 @@
-[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.6361041.svg)](https://doi.org/10.5281/zenodo.6361041)
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.6363751.svg)](https://doi.org/10.5281/zenodo.6363751)
 
 # Overview
 This repository contains all of the simulation and analysis code for the manuscript ["Interpretable and tractable models of transcriptional noise for the rational design of single-molecule quantification experiments"](https://www.biorxiv.org/content/10.1101/2021.09.06.459173v4), a discussion of the actionable differences induced by choice of stochastic continuous transcriptional model. We investigate a two-species model with a time-dependent transcription rate, splicing, and degradation. The time-dependent transcription rate is described by the Cox-Ingersoll-Ross (CIR) or Gamma Ornstein-Uhlenbeck (Γ-OU) models.
