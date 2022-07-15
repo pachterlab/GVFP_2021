@@ -89,6 +89,22 @@ def get_NB_2sp(mx, params):
     Pss = irfftn(gf, s=mx)                        # Get Pss by inverse fast Fourier transform
     Pss = np.abs(Pss)/np.sum(np.abs(Pss))           # Normalize
     return Pss
+
+
+def ll_NB(phi, const, mx, data):
+    # Get parameters
+    x, y = phi
+    beta, gamma, K_avg = const
+    
+    # Convert from (x, y) to original parameters
+    a, kappa, theta = convert_xy_to_params(x, y, beta, gamma, K_avg)
+    params = [beta, gamma, a, kappa, theta]
+    
+    Pss = get_NB_2sp(mx, params)    # Compute Pss
+
+    lp = np.log(Pss)
+    result = np.sum(lp[data])
+    return result
   
   # Get 2 species GOU generating function using ODE method
 def get_gf_GOU_2sp_ODE(g0, g1, params):
