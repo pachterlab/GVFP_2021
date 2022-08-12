@@ -5,9 +5,11 @@ This repository contains all of the simulation and analysis code for the manuscr
 
 # Repository Contents
 
-* `figure_2_notebook.ipynb` and `figure_3_notebook.ipynb`: Code to reproduce the demonstrations of limiting cases and inferential performance.
+* `figure_2_notebook.ipynb`, `figure_3_notebook.ipynb` and `figure_4_notebook.ipynb`: Code to reproduce the demonstrations of limiting cases and inferential performance.
 
-* `figure_2_notebook_colab.ipynb` and `figure_3_notebook_colab.ipynb`: Code to reproduce the demonstrations of limiting cases and inferential performance, adapted for Google Colaboratory.
+* `figure_2_notebook_colab.ipynb`, `figure_3_notebook_colab.ipynb` and `figure_4_notebook_colab.ipynb`: Code to reproduce the demonstrations of limiting cases and inferential performance, adapted for Google Colaboratory.
+
+* `figure_4_data_4pMC.ipynb` and `figure_4_data_grid.ipynb`: Code to generate the data used in figure 4.
 
 * `gg210824_gou_cir.ipynb`: Code to reproduce the figures and results in the supplement. 
 
