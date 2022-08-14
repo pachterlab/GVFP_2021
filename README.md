@@ -54,6 +54,10 @@ parfor 2022.3.0
 Theano-PyMC 1.1.2
 arviz 0.11.4
 pymc3 3.11.4
+loompy 3.0.7
+numdifftools 0.9.40
+anndata 0.8.0
+monod 0.2.2.6
 ```
 Installing these dependencies typically takes under one minute.
 
@@ -70,6 +74,22 @@ To reproduce the distributions and transcription rate time-series demonstrated i
 To reproduce the distributions, parameter posteriors, Bayes factor landscapes, and identifiability trends demonstrated in Figure 3, open `figure_3_notebook_colab.ipynb`, click "Open in Colab", and select "Runtime &rarr; Run all". Note that this notebook is not deterministic, as the model sampling and MCMC chains are intrinsically random. This notebook typically takes under 25 minutes to complete. 
 
 ## Figure 4
+
+Figure 4 requires fairly computationally intensive analyses, and has been split so parts can be reproduced separately.
+
+To prepare the main notebook, open `figure_4_notebook.ipynb` and run all cells above "Predictive filtering: preprocessing."
+
+To reproduce the primary *Monod* workflow, which fits a set of glutamatergic subtypes to the limiting regimes of the CIR and Γ-OU models, run all cells above "Predictive filtering: analysis of Monod results and AIC computation". This step should take under 15 minutes.
+
+To reproduce the secondary *Monod* workflow, which uses those fits and Akaike weights to generate candidate genes and Figure 4a, run all cells between "Predictive filtering: analysis of Monod results and AIC computation" and "Out-of-sample analysis". This step should take under 3 minutes.
+
+To reproduce the full model gradient estimation and likelihood ratio computation, run all cells between "Out-of-sample analysis" and "SDE goodness of fit". This step can take between 25 minutes (using 1 restart and a maximum of 5 iterations) and a day (using 10 restarts and a maximum of 15 iterations), with the caveat that the faster, lower-fidelity fits occasionally fail and converge to suboptimal parameter values. The number of restarts and iterations is controlled by the integers in the final two arguments of the `zip` call in this section.
+
+To reproduce the *post hoc* goodness-of-fit testing and generate the rest of Figure 4, run all cells after "SDE goodness of fit". This step should take under 5 minutes. The generation of Figure 4b will automatically load in the Bayes factor results.
+
+To reproduce the MCMC fits to 12 genes of interest, open `figure_4_data_4pMC.ipynb` and run all cells above "BF plots". This typically takes several hours.
+
+To compute the Bayes factors from the MCMC fits, open `figure_4_BF.ipynb` and run the notebook.
 
 ## Supplementary figures
 
