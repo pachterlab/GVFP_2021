@@ -11,7 +11,9 @@ This repository contains all of the simulation and analysis code for the manuscr
 
 * `figure_4_data_4pMC.ipynb` and `figure_4_BF.ipynb`: Code to generate the Bayes factors displayed in figure 4.
 
-* `gg210824_gou_cir.ipynb`: Code to reproduce the figures and results in the supplement. 
+* `figure_SI_extfrac_notebook.ipynb` and `figure_SI_extfrac_notebook_colab.ipynb`: Code to generate the extrinsic noise fraction figure from the SI.
+
+* `gg210824_gou_cir.ipynb`: Code to reproduce the other figures and results in the supplement. 
 
 * `gg220316_sim_demo.ipynb`: Code to demonstrate the simulation procedure at runtime.
 
