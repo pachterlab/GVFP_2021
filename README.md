@@ -54,7 +54,6 @@ numpy 1.21.5
 oct2py 5.4.3
 octave-kernel 0.34.1
 matplotlib 3.2.2
-multiprocess 0.70.12.2
 parfor 2022.3.0
 Theano-PyMC 1.1.2
 arviz 0.11.4
